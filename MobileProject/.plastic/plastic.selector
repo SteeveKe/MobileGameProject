@@ -1,0 +1,4 @@
+repository "MobileProject@steevekefr@cloud"
+  path "/"
+    br "/main"
+    co "/main"
