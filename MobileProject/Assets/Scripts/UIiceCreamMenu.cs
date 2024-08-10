@@ -33,8 +33,8 @@ public class UIiceCreamMenu : MonoBehaviour
             {
                 GameObject componentItem = Instantiate(componentUI, coneComponentHandler);
                 itemComponentUI itemComponentUI = componentItem.GetComponent<itemComponentUI>();
-                itemComponentUI.SetIcon(iceCreamBase.icon);
-                itemComponentUI.SetName(iceCreamBase.name);
+                itemComponentUI.IceCreamComponent = iceCreamBase;
+                itemComponentUI.SetElementUI();
                 itemComponentUI.UISelectorMenu = this;
                 itemComponentUI.Index = index;
                 index++;
@@ -52,8 +52,8 @@ public class UIiceCreamMenu : MonoBehaviour
             {
                 GameObject componentItem = Instantiate(componentUI, ballComponentHandler);
                 itemComponentUI itemComponentUI = componentItem.GetComponent<itemComponentUI>();
-                itemComponentUI.SetIcon(iceCreamBall.icon);
-                itemComponentUI.SetName(iceCreamBall.name);
+                itemComponentUI.IceCreamComponent = iceCreamBall;
+                itemComponentUI.SetElementUI();
                 itemComponentUI.UISelectorMenu = this;
                 itemComponentUI.Index = index;
                 index++;
@@ -71,8 +71,8 @@ public class UIiceCreamMenu : MonoBehaviour
             {
                 GameObject componentItem = Instantiate(componentUI, toppingComponentHandler);
                 itemComponentUI itemComponentUI = componentItem.GetComponent<itemComponentUI>();
-                itemComponentUI.SetIcon(iceCreamTopping.icon);
-                itemComponentUI.SetName(iceCreamTopping.name);
+                itemComponentUI.IceCreamComponent = iceCreamTopping;
+                itemComponentUI.SetElementUI();
                 itemComponentUI.UISelectorMenu = this;
                 itemComponentUI.Index = index;
                 index++;

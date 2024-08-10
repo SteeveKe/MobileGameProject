@@ -9,11 +9,18 @@ using Image = UnityEngine.UI.Image;
 
 public class itemComponentUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    [SerializeField] private Image _icon;
+    [SerializeField] private Image icon;
     [SerializeField] private new TMP_Text name;
     [SerializeField] private int index;
     [SerializeField] private Transform parentTransform;
+    private IceCream _iceCreamComponent;
     private UIiceCreamMenu _uISelectorMenu;
+
+    public IceCream IceCreamComponent
+    {
+        get => _iceCreamComponent;
+        set => _iceCreamComponent = value;
+    }
 
     public UIiceCreamMenu UISelectorMenu
     {
@@ -27,14 +34,13 @@ public class itemComponentUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         set => index = value;
     }
 
-    public void SetIcon(Sprite sprite)
+    public void SetElementUI()
     {
-        _icon.sprite = sprite;
-    }
-
-    public void SetName(string iconName)
-    {
-        name.text = iconName;
+        if (_iceCreamComponent)
+        {
+            icon.sprite = _iceCreamComponent.icon;
+            name.text = _iceCreamComponent.name;
+        }
     }
 
     public void OnBeginDrag(PointerEventData eventData)
