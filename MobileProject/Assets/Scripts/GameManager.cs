@@ -7,9 +7,24 @@ using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public static GameManager GameManagerSystem;
+    private IceCreamTemplate _iceCreamTemplate;
+
+    public IceCreamTemplate IceCreamTemplate => _iceCreamTemplate;
+    
+    //singleton
     private void Awake()
     {
+        if (!GameManagerSystem)
+        {
+            GameManagerSystem = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+        
+        _iceCreamTemplate = new IceCreamTemplate();
     }
 
     // Update is called once per frame

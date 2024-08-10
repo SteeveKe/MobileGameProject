@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 8092504969549080232}
   - component: {fileID: 91513525974340279}
   - component: {fileID: 8295824593808335346}
+  - component: {fileID: 3445043150703175202}
   m_Layer: 5
   m_Name: UIiceCreamComponentItem
   m_TagString: Untagged
@@ -242,6 +243,22 @@ MonoBehaviour:
   name: {fileID: 7637768803754588404}
   index: 0
   parentTransform: {fileID: 0}
+  componentItemRayCast: {fileID: 3445043150703175202}
+--- !u!114 &3445043150703175202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7023641200493272165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65dc8e05bcbdc574082993feb4618907, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 7637768803754588404}
+  image1: {fileID: 8092504969549080232}
+  image2: {fileID: 3865505931635905977}
 --- !u!1 &7568589866613767151
 GameObject:
   m_ObjectHideFlags: 0

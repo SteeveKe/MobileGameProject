@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3909279093389280066}
   - component: {fileID: 7867736129159554444}
+  - component: {fileID: 5500651878948290824}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -47,5 +48,17 @@ MonoBehaviour:
   iceCreamBaseList:
   - {fileID: 11400000, guid: 8cc6f924ec26e0a45bce9a6c3609d325, type: 2}
   iceCreamBallList:
-  - {fileID: 11400000, guid: 8cc6f924ec26e0a45bce9a6c3609d325, type: 2}
+  - {fileID: 11400000, guid: 38a362ef8c82c134599f0587545ad247, type: 2}
   iceCreamToppingsList: []
+--- !u!114 &5500651878948290824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8174787205378898066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2607ce61bbb50f44847ac318e7e6ee8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

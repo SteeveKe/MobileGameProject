@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 using Image = UnityEngine.UI.Image;
 
@@ -13,6 +14,7 @@ public class itemComponentUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     [SerializeField] private new TMP_Text name;
     [SerializeField] private int index;
     [SerializeField] private Transform parentTransform;
+    [SerializeField] private ComponentItemRayCastUI componentItemRayCast;
     private IceCream _iceCreamComponent;
     private UIiceCreamMenu _uISelectorMenu;
 
@@ -34,6 +36,7 @@ public class itemComponentUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         set => index = value;
     }
 
+    //set icon and name to be displayed on UI canvas
     public void SetElementUI()
     {
         if (_iceCreamComponent)
@@ -49,6 +52,7 @@ public class itemComponentUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         parentTransform = transform.parent;
         transform.SetParent(transform.root);
         transform.SetAsLastSibling();
+        componentItemRayCast.DeactivateRayCast();
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -61,5 +65,6 @@ public class itemComponentUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         transform.SetParent(parentTransform);
         transform.SetSiblingIndex(index);
         _uISelectorMenu.RemoveEmptyComponent();
+        componentItemRayCast.ActivateRayCast();
     }
 }
