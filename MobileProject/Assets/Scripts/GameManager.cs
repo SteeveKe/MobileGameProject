@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager GameManagerSystem;
     private IceCreamTemplate _iceCreamTemplate;
+    [SerializeField] private List<SellingStand> standList;
 
     public IceCreamTemplate IceCreamTemplate => _iceCreamTemplate;
     
@@ -27,9 +28,11 @@ public class GameManager : MonoBehaviour
         _iceCreamTemplate = new IceCreamTemplate();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DisplayIceCreamComponent(IceCream iceCreamComponent, GameObject prefab)
     {
-        
+        foreach (SellingStand sellingStand in standList)
+        {
+            sellingStand.DisplayIceCreamComponent(iceCreamComponent, prefab);
+        }
     }
 }

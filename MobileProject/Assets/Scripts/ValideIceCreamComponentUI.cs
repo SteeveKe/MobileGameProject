@@ -11,7 +11,6 @@ public class ValideIceCreamComponentUI : MonoBehaviour, IDropHandler
     {
         GameObject dropped = eventData.pointerDrag;
         itemComponentUI componentUI = dropped.GetComponent<itemComponentUI>();
-        Debug.Log("test");
         if (componentUI)
         {
             GameManager.GameManagerSystem.IceCreamTemplate.SelectComponent(componentUI);

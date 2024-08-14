@@ -21,9 +21,11 @@ public class IceCreamTemplate
     [SerializeField] private Tuple<IceCreamBase, GameObject> _iceCreamBase;
     [SerializeField] private Tuple<IceCreamBall, GameObject> _iceCreamBall;
     [SerializeField] private Tuple<IceCreamTopping, GameObject> _iceCreamTopping;
+    private GameManager _gameManager;
 
     public IceCreamTemplate()
     {
+        _gameManager = GameManager.GameManagerSystem;
         _iceCreamBase = new Tuple<IceCreamBase, GameObject>(null, null);
         _iceCreamBall = new Tuple<IceCreamBall, GameObject>(null, null);
         _iceCreamTopping = new Tuple<IceCreamTopping, GameObject>(null, null);
@@ -35,16 +37,23 @@ public class IceCreamTemplate
         switch (component.IceCreamComponent)
         {
             case IceCreamBase baseComponent:
-                _iceCreamBase = new Tuple<IceCreamBase, GameObject>(baseComponent, component.gameObject);
+                _iceCreamBase = new Tuple<IceCreamBase, GameObject>(baseComponent, component.IceCreamComponent.prefab);
+                _gameManager.DisplayIceCreamComponent(_iceCreamBase.Item1, _iceCreamBase.Item2);
                 Debug.Log("select base");
                 break;
             case IceCreamBall ballComponent:
-                _iceCreamBall = new Tuple<IceCreamBall, GameObject>(ballComponent, component.gameObject);
-                Debug.Log("select ball");
+                if (_iceCreamBase.Item1)
+                {
+                    _iceCreamBall = new Tuple<IceCreamBall, GameObject>(ballComponent, component.IceCreamComponent.prefab);
+                    Debug.Log("select ball");
+                }
                 break;
             case IceCreamTopping toppingComponent:
-                _iceCreamTopping = new Tuple<IceCreamTopping, GameObject>(toppingComponent, component.gameObject);
-                Debug.Log("select topping");
+                if (_iceCreamBall.Item1)
+                {
+                    _iceCreamTopping = new Tuple<IceCreamTopping, GameObject>(toppingComponent, component.IceCreamComponent.prefab);
+                    Debug.Log("select topping");
+                }
                 break;
             default:
                 Debug.Log("error on component selector");
