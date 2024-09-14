@@ -6,5 +6,4 @@ using UnityEngine;
 public class IceCreamBase : IceCream
 {
     public IceCreamPart iceCreamPart = IceCreamPart.Base;
-    //public int maxCapacity = 1;
 }

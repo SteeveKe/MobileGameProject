@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c919c1911a9613845b658c5969c584f9, type: 3}
-  m_Name: testBall
+  m_Name: testBall3
   m_EditorClassIdentifier: 
-  name: testBall
+  name: testBall3
   icon: {fileID: 21300000, guid: 19eaa8f07320738479f2b2af7a34ed09, type: 3}
-  prefab: {fileID: 8345970073910235838, guid: d4275f053a3302142bb5c11263b17d1b, type: 3}
+  prefab: {fileID: 8453200753952517795, guid: 8f33ebdd57940a347b0e9353cd99f1f9, type: 3}
   iceCreamPart: 1
   iceCreamType: 0

@@ -9,32 +9,64 @@ public class SellingStand : MonoBehaviour
 {
     [SerializeField] private Transform iceCreamPos;
     private GameManager _gameManager;
+    private IceCreamTemplate _iceCreamTemplate;
 
-    [SerializeField] private GameObject currentBase;
-    [SerializeField] private GameObject currentBall;
-    [SerializeField] private GameObject currentTopping;
+    private IceCreamComponentPlacement _ballPlacement;
+    private List<IceCreamComponentPlacement> _toppingPlacement = new List<IceCreamComponentPlacement>();
+
+    public IceCreamComponentPlacement BallPlacement => _ballPlacement;
 
     private void Start()
     {
         _gameManager = GameManager.GameManagerSystem;
+        _iceCreamTemplate = _gameManager.IceCreamTemplate;
     }
 
-    public void DisplayIceCreamComponent(IceCream iceCreamComponent, GameObject prefab)
+    //Instantiate and place selected ice cream component
+    public void PlaceIceCreamComponent(IceCream iceCreamComponent, GameObject prefab)
     {
         switch (iceCreamComponent)
         {
-            case IceCreamBase baseComponent:
-                currentBase = Instantiate(prefab);
-                currentBase.transform.SetParent(iceCreamPos);
-                currentBase.transform.localPosition = Vector3.zero;
+            case IceCreamBase:
+                
+                GameObject newBase = Instantiate(prefab, iceCreamPos);
+                _iceCreamTemplate.CurrentBase = newBase;
+                _ballPlacement = newBase.GetComponent<IceCreamComponentPlacement>();
                 break;
-            case IceCreamBall ballComponent:
+            
+            case IceCreamBall:
+                
+                GameObject newBall = _ballPlacement.PlaceComponent(prefab);
+                if (newBall)
+                {
+                    _iceCreamTemplate.CurrentBall.Add(newBall);
+                    _toppingPlacement.Add(newBall.GetComponent<IceCreamComponentPlacement>());
+                }
+                
                 break;
-            case IceCreamTopping toppingComponent:
+            
+            case IceCreamTopping:
+
+                foreach (IceCreamComponentPlacement placement in _toppingPlacement)
+                {
+                    GameObject newTopping = placement.PlaceComponent(prefab);
+
+                    if (newTopping)
+                    {
+                        _iceCreamTemplate.CurrentTopping.Add(newTopping);
+                    }
+                }
                 break;
             default:
                 Debug.Log("Display ice cream component failed");
                 break;
         }
+    }
+
+    //clear ice cream placement
+    public void ClearIceCream()
+    {
+        _ballPlacement = null;
+        _toppingPlacement.Clear();
     }
 }
